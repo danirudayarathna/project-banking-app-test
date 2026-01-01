@@ -10,7 +10,8 @@ public class RegisterPage {
 
     @BeforeMethod
     public void registerPageBeforeTest(){
-        WebDriver driver = new ChromeDriver();
+        driver = new ChromeDriver();
+        driver.manage().window().maximize();
         driver.get("https://parabank.parasoft.com/parabank/register.htm");
     }
 
@@ -31,5 +32,38 @@ public class RegisterPage {
 
         WebElement state = driver.findElement(By.xpath("(//input[@id='customer.address.state'])[1]"));
         state.sendKeys("Western Province");
+
+        WebElement zipcode = driver.findElement(By.xpath("(//input[@id='customer.address.zipCode'])[1]"));
+        zipcode.sendKeys("1000");
+
+        WebElement phone = driver.findElement(By.xpath("(//input[@id='customer.phoneNumber'])[1]"));
+        phone.sendKeys("0711234567");
+
+        WebElement ssn = driver.findElement(By.xpath("(//input[@id='customer.ssn'])[1]"));
+        ssn.sendKeys("865-50-6891");
+
+        WebElement userName = driver.findElement(By.xpath("(//input[@id='customer.username'])[1]"));
+        userName.sendKeys("dDaniru");
+
+        WebElement password = driver.findElement(By.id("customer.password"));
+        password.sendKeys("daniru123");
+
+        WebElement confirmPassword = driver.findElement(By.xpath("(//input[@id='repeatedPassword'])[1]"));
+        confirmPassword.sendKeys("daniru123");
+
+        WebElement registerButton = driver.findElement(By.xpath("(//input[@value='Register'])[1]"));
+        registerButton.click();
+
+        //Validation
+        String expected = "ParaBank | Customer Created";
+        String actual = driver.getTitle();
+
+        if (expected.equals(actual)){
+            System.out.println("Test is Complete");
+        }else {
+            System.out.println("Test is failed");
+        }
+
+
     }
 }
