@@ -35,6 +35,10 @@ public class UpdateContact {    WebDriver driver;
         firstName.clear();
         lastName.sendKeys("Smith");
 
+        WebElement address = driver.findElement(By.xpath("(//input[@id='customer.address.street'])[1]"));
+        address.clear();
+        address.sendKeys("1431 Main St");
+
 
     }
 }
