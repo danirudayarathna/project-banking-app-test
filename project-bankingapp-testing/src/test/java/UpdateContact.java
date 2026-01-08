@@ -39,6 +39,23 @@ public class UpdateContact {    WebDriver driver;
         address.clear();
         address.sendKeys("1431 Main St");
 
+        WebElement city = driver.findElement(By.xpath("(//input[@id='customer.address.city'])[1]"));
+        address.clear();
+        address.sendKeys("Beverly Hills");
 
+        WebElement state = driver.findElement(By.xpath("(//input[@id='customer.address.state'])[1]"));
+        address.clear();
+        address.sendKeys("CA");
+
+        WebElement zipcode = driver.findElement(By.xpath("90210"));
+        zipcode.clear();
+        zipcode.sendKeys("90210");
+
+        WebElement phone = driver.findElement(By.xpath("310-447-4121"));
+        phone.clear();
+        phone.sendKeys("310-447-4121");
+
+        WebElement updateButton = driver.findElement(By.xpath("(//input[@value='Update Profile'])[1]"));
+        updateButton.click();
     }
 }
