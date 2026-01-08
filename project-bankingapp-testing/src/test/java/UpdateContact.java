@@ -5,10 +5,13 @@ import org.openqa.selenium.chrome.ChromeDriver;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 
-public class UpdateContact {    WebDriver driver;
+public class UpdateContact {
+
+    WebDriver driver;
+
 
     @BeforeMethod
-    public void openAccountPageBeforeTest() {
+    public void updateContactBeforeTest() {
         driver = new ChromeDriver();
         driver.manage().window().maximize();
         driver.get("https://parabank.parasoft.com/parabank/index.htm");
@@ -16,6 +19,8 @@ public class UpdateContact {    WebDriver driver;
 
     @Test
     public void updateContactTest(){
+
+
         WebElement userName = driver.findElement(By.xpath("(//input[@name='username'])[1]"));
         userName.sendKeys("john");
 
@@ -32,7 +37,7 @@ public class UpdateContact {    WebDriver driver;
         firstName.sendKeys("John");
 
         WebElement lastName = driver.findElement(By.xpath("(//input[@id='customer.lastName'])[1]"));
-        firstName.clear();
+        lastName.clear();
         lastName.sendKeys("Smith");
 
         WebElement address = driver.findElement(By.xpath("(//input[@id='customer.address.street'])[1]"));
@@ -47,13 +52,9 @@ public class UpdateContact {    WebDriver driver;
         state.clear();
         state.sendKeys("CA");
 
-        WebElement zipcode = driver.findElement(By.xpath("90210"));
+        WebElement zipcode = driver.findElement(By.xpath("(//input[@id='customer.address.zipCode'])[1]"));
         zipcode.clear();
         zipcode.sendKeys("90210");
-
-        WebElement phone = driver.findElement(By.xpath("310-447-4121"));
-        phone.clear();
-        phone.sendKeys("310-447-4121");
 
         WebElement updateButton = driver.findElement(By.xpath("(//input[@value='Update Profile'])[1]"));
         updateButton.click();
