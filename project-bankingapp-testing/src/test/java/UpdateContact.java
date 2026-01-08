@@ -40,12 +40,12 @@ public class UpdateContact {    WebDriver driver;
         address.sendKeys("1431 Main St");
 
         WebElement city = driver.findElement(By.xpath("(//input[@id='customer.address.city'])[1]"));
-        address.clear();
-        address.sendKeys("Beverly Hills");
+        city.clear();
+        city.sendKeys("Beverly Hills");
 
         WebElement state = driver.findElement(By.xpath("(//input[@id='customer.address.state'])[1]"));
-        address.clear();
-        address.sendKeys("CA");
+        state.clear();
+        state.sendKeys("CA");
 
         WebElement zipcode = driver.findElement(By.xpath("90210"));
         zipcode.clear();
