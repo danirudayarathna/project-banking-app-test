@@ -2,8 +2,11 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.support.ui.Select;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
+
+import java.util.List;
 
 public class RequestLoanPage {
     WebDriver driver;
@@ -29,5 +32,27 @@ public class RequestLoanPage {
         loginButton.click();
 
         driver.get("https://parabank.parasoft.com/parabank/requestloan.htm");
+
+        WebElement lAmount = driver.findElement(By.xpath("//input[@id='amount']"));
+        lAmount.sendKeys("2000");
+
+        WebElement dPayment = driver.findElement(By.xpath("//input[@id='downPayment']"));
+        dPayment.sendKeys("500");
+
+        WebElement accDropdown = driver.findElement(By.xpath("//select[@id='fromAccountId']"));
+        accDropdown.click();
+        Select selectElement =new Select(accDropdown);
+
+        List<WebElement> options = selectElement.getOptions();
+        System.out.println(options.size());
+
+        for (WebElement e:options){
+            System.out.println("The Values are " + e.getText());
+        }
+
+        selectElement.selectByValue("13344");
+
+        WebElement applyButton = driver.findElement(By.xpath("//input[@value='Apply Now']"));
+        applyButton.click();
     }
 }
