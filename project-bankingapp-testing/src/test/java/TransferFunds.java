@@ -50,7 +50,22 @@ public class TransferFunds {
 
         selectElement.selectByValue("12900");
 
+        WebElement dropDown2 = driver.findElement(By.id("toAccountId"));
+        dropDown2.click();
 
+        Select selectElement1 = new Select(dropDown2);
+
+        List<WebElement> options2 = selectElement1.getOptions();
+        System.out.println(options2.size());
+
+        for (WebElement e:options2){
+            System.out.println("Values are " + e.getText());
+        }
+
+        selectElement1.selectByValue("54321");
+
+        WebElement transferButton = driver.findElement(By.xpath("//input[@value='Transfer']"));
+        transferButton.click();
 
     }
 }
