@@ -44,11 +44,13 @@ public class TransferFunds {
         List<WebElement> options1 = selectElement.getOptions();
         System.out.println(options1.size());
 
-//        for (WebElement e:options1){
-//            System.out.println("Dropdown options are " + );
-//        }
-//
-//        selectElement.selectByValue("12900");
+        for (WebElement e:options1){
+            System.out.println("Dropdown options are " + e.getText());
+        }
+
+        selectElement.selectByValue("12900");
+
+
 
     }
 }
