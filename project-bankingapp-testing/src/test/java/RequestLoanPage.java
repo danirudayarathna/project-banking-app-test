@@ -13,10 +13,11 @@ public class RequestLoanPage {
 
 
     @BeforeMethod
-    public void requestLoanBeforeTest() {
+    public void requestLoanBeforeTest() throws InterruptedException {
         driver = new ChromeDriver();
         driver.manage().window().maximize();
         driver.get("https://parabank.parasoft.com/parabank/index.htm");
+        Thread.sleep(500);
     }
 
     @Test
@@ -50,7 +51,17 @@ public class RequestLoanPage {
             System.out.println("The Values are " + e.getText());
         }
 
-        selectElement.selectByValue("13344");
+        if (selectElement.isMultiple()) {
+        List<WebElement> options1 = selectElement.getOptions();
+        
+        
+        for (int i = 0; i < options1.size(); i++) {
+            selectElement.selectByIndex(i);
+        }
+        System.out.println("All options selected successfully!");
+        } else {
+        System.out.println("This dropdown doesn't support multiple selections!");
+        }
 
         WebElement applyButton = driver.findElement(By.xpath("//input[@value='Apply Now']"));
         applyButton.click();
